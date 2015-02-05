@@ -29,5 +29,9 @@ angular.module('foursquare', [
 		.success(function (data) {
 			console.log(data);
 		});
+		$http.get('https://api.foursquare.com/v2/users/self?v=20140805&oauth_token=' + $oauth2.getToken().access_token)
+		.success(function (data) {
+			console.log(data);
+		});
 	};
 }]);
