@@ -1,0 +1,44 @@
+{
+  "name": "mtc-auth",
+  "version": "2.0.1",
+  "authors": [
+    "Erik Donohoo <donohooem@mtc.byu.edu>"
+  ],
+  "description": "Angular oauth2 module for use with oauth2 providers",
+  "main": [
+    "dist/mtc-auth.js",
+    "dist/oauth2.css"
+  ],
+  "keywords": [
+    "angular",
+    "oauth2",
+    "mtc"
+  ],
+  "dependencies": {
+    "angular": "^1.2.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.2.0",
+    "angular-scenario": "^1.2.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "src",
+    "Gruntfile.js",
+    "karma.conf.js",
+    "module.*",
+    "package.json"
+  ],
+  "_release": "2.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.1",
+    "commit": "34ea08d3dd2f8ba1fdcaf0ef8b4907b462ee489b"
+  },
+  "_source": "git@code.mtc.byu.edu:mtc-angular-modules/mtc-auth.git",
+  "_target": "^2.0.1",
+  "_originalSource": "git@code.mtc.byu.edu:mtc-angular-modules/mtc-auth.git"
+}

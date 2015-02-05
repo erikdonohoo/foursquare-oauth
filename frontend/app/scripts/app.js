@@ -10,7 +10,8 @@ angular.module('foursquare', [
 		clientId: 'DU0NBQTNEANSZ0PZVQT5VKEPGJQK0DJYZHHUA1UUV1WJZGK0',
 		redirectUri: true,
 		autoAuth: false,
-		oauth2Url: 'https://foursquare.com/oauth2/authorize'
+		oauth2Url: 'https://foursquare.com/oauth2/authorize',
+		contentUrls: ['https://api.foursquare.com']
 	});
 }])
 
@@ -25,11 +26,11 @@ angular.module('foursquare', [
 	$scope.$oauth2 = $oauth2;
 
 	$scope.getStuff = function () {
-		$http.get('https://api.foursquare.com/v2/users/self/checkins?v=20140805&oauth_token=' + $oauth2.getToken().access_token)
+		$http.get('https://api.foursquare.com/v2/users/self/checkins')
 		.success(function (data) {
 			console.log(data);
 		});
-		$http.get('https://api.foursquare.com/v2/users/self?v=20140805&oauth_token=' + $oauth2.getToken().access_token)
+		$http.get('https://api.foursquare.com/v2/users/self')
 		.success(function (data) {
 			console.log(data);
 		});
