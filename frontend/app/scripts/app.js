@@ -59,8 +59,8 @@ angular.module('foursquare', [
 	}
 
 	$scope.logout = function () {
-		window.localStorage.clear();
-		window.sessionStorage.clear();
+		delete window.localStorage.foursquareuser;
+		delete window.sessionStorage['angular-oauth2-DU0NBQTNEANSZ0PZVQT5VKEPGJQK0DJYZHHUA1UUV1WJZGK0'];
 		window.location.reload();
 	};
 
