@@ -34,11 +34,14 @@
 			<button ng-click="signup()">Sign up</button>
 		</div>
 		<div class="container" ng-show="data.loggedInUser">
-			<div class="pull-left">
+			<div ng-if="!data.loggedInUser.id">
+				<button ng-click="auth()">Bind to foursquare</button>
 			</div>
-			<div class="pull-right">
+			<div>
 				<button ng-click="logout()">Logout</button>
-				<button ng-repeat="user in data.allusers" ng-click="data.viewUser = user">{{user.username}}</button>
+				<div ng-repeat="user in data.allusers">
+					<button  ng-click="data.viewUser = user">{{user.username}}</button>
+				</div>
 			</div>
 		</div>
 

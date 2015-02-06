@@ -37,8 +37,21 @@ angular.module('foursquare', [
 	// Check if someone is logged in
 	if (window.localStorage.foursquareuser) {
 		data.loggedInUser = JSON.parse(window.localStorage.foursquareuser);
+
+		// Is there foursquare sign in stuf?
+		if ($oauth2.getToken() && !data.loggedInUser.id) {
+			// Bind
+			$http.get('https://api.foursquare.com/v2/users/self').
+			success(function (user) {
+				data.loggedInUser.id = user.id;
+				updateUser(data.loggedInUser);
+			});
+		}
 	}
 
+	function updateUser(user) {
+		return $http.put('https://52.0.30.223/api/users/' + user.username);
+	}
 	function saveNewUser(user) {
 		return $http.post('https://52.0.30.223/api/users', user);
 	}
@@ -63,6 +76,7 @@ angular.module('foursquare', [
 			};
 			saveNewUser(user).then(function () {
 				data.loggedInUser = user;
+				data.allusers.push(user);
 				window.localStorage.foursquareuser = JSON.stringify(user);
 			});
 		}
