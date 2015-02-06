@@ -44,7 +44,7 @@ angular.module('foursquare', [
 			$http.get('https://api.foursquare.com/v2/users/self').
 			success(function (obj) {
 				data.loggedInUser.id = obj.response.user.id;
-				window.localStorage.foursquareuser = JSON.stringify(user);
+				window.localStorage.foursquareuser = JSON.stringify(data.loggedInUser);
 				updateUser(data.loggedInUser);
 			});
 		}
