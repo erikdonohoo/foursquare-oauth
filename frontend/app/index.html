@@ -41,7 +41,7 @@
 				</div>
 			</div>
 			<div>
-				<button ng-click="logout()">Logout</button>
+				<button ng-click="logout()" ng-show="data.loggedInUser">Logout</button>
 				<hr>
 				<div>View a user...</div>
 				<div ng-repeat="user in data.allusers">
