@@ -40,6 +40,8 @@
 			</div>
 			<div>
 				<button ng-click="logout()">Logout</button>
+				<hr>
+				<div>View a user...</div>
 				<div ng-repeat="user in data.allusers">
 					<button  ng-click="data.viewUser = user">{{user.username}}</button>
 				</div>
