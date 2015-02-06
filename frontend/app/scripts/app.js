@@ -44,6 +44,7 @@ angular.module('foursquare', [
 			$http.get('https://api.foursquare.com/v2/users/self').
 			success(function (obj) {
 				data.loggedInUser.id = obj.response.user.id;
+				data.loggedInUser.token = $oauth2.getToken();
 				window.localStorage.foursquareuser = JSON.stringify(data.loggedInUser);
 				updateUser(data.loggedInUser);
 			});
@@ -61,6 +62,25 @@ angular.module('foursquare', [
 		window.localStorage.clear();
 		window.sessionStorage.clear();
 		window.location.reload();
+	};
+
+	$scope.login = function () {
+		var found = false;
+		data.allusers.forEach(function (user) {
+			if (user.username === $scope.signin.name) {
+				found = true;
+			}
+		});
+		if (found) {
+			$http.get('https://52.0.30.223/api/users/' + $scope.signin.name)
+			.then(function (user) {
+				data.loggedInUser = user;
+				window.localStorage.foursquareuser = JSON.stringify(data.loggedInUser);
+				if (user.token) {
+					window.sessionStorage['angular-oauth2-DU0NBQTNEANSZ0PZVQT5VKEPGJQK0DJYZHHUA1UUV1WJZGK0'] = JSON.stringify(user.token);
+				}
+			});
+		}
 	};
 
 	$scope.signup = function () {
