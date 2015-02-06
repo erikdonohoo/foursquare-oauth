@@ -43,6 +43,12 @@ angular.module('foursquare', [
 		return $http.post('https://52.0.30.223/api/users', user);
 	}
 
+	$scope.logout = function () {
+		window.localStorage.clear();
+		window.sessionStorage.clear();
+		window.location.reload();
+	};
+
 	$scope.signup = function () {
 		var found = false;
 		data.allusers.forEach(function (user) {

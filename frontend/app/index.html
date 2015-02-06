@@ -37,6 +37,7 @@
 			<div class="pull-left">
 			</div>
 			<div class="pull-right">
+				<button ng-click="logout()">Logout</button>
 				<button ng-repeat="user in data.allusers" ng-click="data.viewUser = user">{{user.username}}</button>
 			</div>
 		</div>
