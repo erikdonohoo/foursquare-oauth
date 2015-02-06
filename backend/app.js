@@ -8,8 +8,6 @@ app.use(express.bodyParser());
 
 var path = '/home/ubuntu/www/foursquare-oauth/backend/data.json';
 
-app.listen(3000);
-
 function getJson() {
 	return JSON.parse(fs.readFileSync(path));
 }
@@ -39,11 +37,11 @@ app.post('/push/checkin', function (req, res) {
 	res.json({msg: 'ok'});
 });
 
-app.get('/users', function (req, res) {
+app.get('/users', function(req, res) {
 	res.json(getJson().users);
 });
 
-app.get('/users/:id', function (req, res) {
+app.get('/users/:id', function(req, res) {
 	var id = req.params.id;
 	var user;
 	getJson().users.forEach(function (u) {
@@ -72,3 +70,5 @@ app.put('/users/:id', function (req, res) {
 	saveDb(db);
 	res.json(req.body);
 });
+
+app.listen(3000);
