@@ -27,13 +27,12 @@
 
 		<!-- Add your site or application content here -->
 		<div class="container">
-			<button ng-click="$oauth2.authenticate()">Auth</button>
-			<button ng-click="getStuff()">Stuff</button>
+			<header>Welcome</header>
+			<div> log in or sign up </div>
+			<input ng-model="sigin.name" />
+			<button ng-click="login()">Login</button>
+			<button ng-click="signup()">Sign up</button>
 		</div>
-
-		<footer>
-			<span class="version">{{appName}} v{{version}}</span><div class="angular"><div/>
-		</footer>
 
 		<!--[if lt IE 9]>
 		<script src="bower_components/es5-shim/es5-shim.js"></script>

@@ -26,7 +26,7 @@ function saveDb(db) {
 	}
 }
 
-app.post('/api/push/checkin', function (req, res) {
+app.post('/push/checkin', function (req, res) {
 	var checkin = JSON.parse(req.body.checkin);
 	var db = getJson();
 	db.users.forEach(function (user) {
@@ -39,11 +39,11 @@ app.post('/api/push/checkin', function (req, res) {
 	res.json({msg: 'ok'});
 });
 
-app.get('/api/users', function (req, res) {
+app.get('/users', function (req, res) {
 	res.json(getJson().users);
 });
 
-app.get('/api/users/:id', function (req, res) {
+app.get('/users/:id', function (req, res) {
 	var id = req.params.id;
 	var user;
 	getJson().users.forEach(function (u) {
@@ -53,7 +53,7 @@ app.get('/api/users/:id', function (req, res) {
 	res.json(user);
 });
 
-app.post('/api/users', function (req, res) {
+app.post('/users', function (req, res) {
 	var user = req.body;
 	var db = getJson();
 	db.users.push(user);
@@ -61,7 +61,7 @@ app.post('/api/users', function (req, res) {
 	res.json(user);
 });
 
-app.put('/api/users/:id', function (req, res) {
+app.put('/users/:id', function (req, res) {
 	var db = getJson();
 	for (var i = 0; i < db.users.length; i++) {
 		var user = db.users[i];

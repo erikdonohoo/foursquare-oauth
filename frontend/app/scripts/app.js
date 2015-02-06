@@ -25,14 +25,18 @@ angular.module('foursquare', [
 
 	$scope.$oauth2 = $oauth2;
 
-	$scope.getStuff = function () {
-		$http.get('https://api.foursquare.com/v2/users/self/checkins')
-		.success(function (data) {
-			console.log(data);
-		});
-		$http.get('https://api.foursquare.com/v2/users/self')
-		.success(function (data) {
-			console.log(data);
-		});
-	};
+
+	// Get info about existing users
+	$http.get('https://52.0.30.223/api/users')
+	.success(function (users) {
+		$scope.allusers = users;
+	});
+
+	// Check if someone is logged in
+	if (window.localStorage.foursquareuser) {
+		$scope.user = JSON.parse(window.localStorage.foursquareuser);
+	}
+
+
+
 }]);
