@@ -78,7 +78,7 @@ angular.module('foursquare', [
 		});
 		if (found) {
 			$http.get('https://52.0.30.223/api/users/' + $scope.signin.name)
-			.then(function (user) {
+			.success(function (user) {
 				data.loggedInUser = user;
 				window.localStorage.foursquareuser = JSON.stringify(data.loggedInUser);
 				if (user.token) {
