@@ -43,6 +43,9 @@ angular.module('foursquare', [
 	if (window.localStorage.foursquareuser) {
 		data.loggedInUser = JSON.parse(window.localStorage.foursquareuser);
 
+		if (data.loggedInUser.token) {
+			window.sessionStorage['angular-oauth2-DU0NBQTNEANSZ0PZVQT5VKEPGJQK0DJYZHHUA1UUV1WJZGK0'] = JSON.stringify(data.loggedInUser.token);
+		}
 		// Is there foursquare sign in stuf?
 		if ($oauth2.getToken() && !data.loggedInUser.id) {
 			// Bind
@@ -52,6 +55,18 @@ angular.module('foursquare', [
 				data.loggedInUser.token = $oauth2.getToken();
 				window.localStorage.foursquareuser = JSON.stringify(data.loggedInUser);
 				updateUser(data.loggedInUser);
+			});
+		} else if ($oauth2.getToken() && data.loggedInUser.id) {
+			// get checkins
+			$http.get('https://api.foursquare.com/v2/users/self/checkins')
+			.success(function (d) {
+				data.loggedInUser.checkins = d.response.checkins.items;
+
+				data.allusers.forEach(function (user) {
+					if (user.username === data.loggedInUser.username) {
+						user.checkins = data.loggedInUser.checkins;
+					}
+				});
 			});
 		}
 	}
