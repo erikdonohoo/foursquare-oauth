@@ -42,8 +42,8 @@ angular.module('foursquare', [
 		if ($oauth2.getToken() && !data.loggedInUser.id) {
 			// Bind
 			$http.get('https://api.foursquare.com/v2/users/self').
-			success(function (user) {
-				data.loggedInUser.id = user.id;
+			success(function (obj) {
+				data.loggedInUser.id = obj.response.user.id;
 				updateUser(data.loggedInUser);
 			});
 		}
