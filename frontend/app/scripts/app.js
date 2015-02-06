@@ -86,7 +86,13 @@ angular.module('foursquare', [
 					// get checkins
 					$http.get('https://api.foursquare.com/v2/users/self/checkins')
 					.success(function (data) {
-						data.loggedInUser.checkins = data.checkins;
+						data.loggedInUser.checkins = data.response.checkins.items;
+
+						data.allusers.forEach(function (user) {
+							if (user.username === data.loggedInUser.username) {
+								user.checkins = data.loggedInUser.checkins;
+							}
+						});
 					});
 				}
 			});
