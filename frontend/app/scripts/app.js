@@ -23,20 +23,45 @@ angular.module('foursquare', [
 		$scope.appName = v.name;
 	});
 
+	var data = {};
+
 	$scope.$oauth2 = $oauth2;
 
 
 	// Get info about existing users
-	$http.get('api/users')
+	$http.get('https://52.0.30.223/api/users')
 	.success(function (users) {
-		$scope.allusers = users;
+		data.allusers = users;
 	});
 
 	// Check if someone is logged in
 	if (window.localStorage.foursquareuser) {
-		$scope.user = JSON.parse(window.localStorage.foursquareuser);
+		data.loggedInUser = JSON.parse(window.localStorage.foursquareuser);
 	}
 
+	function saveNewUser(user) {
+		return $http.post('https://52.0.30.223/api/users', user);
+	}
 
+	$scope.signup = function () {
+		var found = false;
+		data.allusers.forEach(function (user) {
+			if (user.username === $scope.signin.name) {
+				found = true;
+			}
+		});
+
+		if (!found) {
+			var user = {
+				username: $scope.signin.name
+			};
+			saveNewUser(user).then(function () {
+				data.loggedInUser = user;
+				window.localStorage.foursquareuser = JSON.stringify(user);
+			});
+		}
+	};
+
+	$scope.data = data;
 
 }]);

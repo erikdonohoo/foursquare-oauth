@@ -26,12 +26,19 @@
 		<![endif]-->
 
 		<!-- Add your site or application content here -->
-		<div class="container">
+		<div class="container" ng-show="!data.loggedInUser">
 			<header>Welcome</header>
 			<div> log in or sign up </div>
 			<input ng-model="sigin.name" />
 			<button ng-click="login()">Login</button>
 			<button ng-click="signup()">Sign up</button>
+		</div>
+		<div class="container" ng-show="data.loggedInUser">
+			<div class="pull-left">
+			</div>
+			<div class="pull-right">
+				<button ng-repeat="user in data.allusers" ng-click="data.viewUser = user">{{user.username}}</button>
+			</div>
 		</div>
 
 		<!--[if lt IE 9]>
