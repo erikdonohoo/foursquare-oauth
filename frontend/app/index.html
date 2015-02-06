@@ -48,7 +48,7 @@
 			<h3>View User: {{data.viewUser.username}}</h3>
 			<div ng-repeat="checkin in data.viewUser.checkins | orderBy:'createdAt':true | limitTo:(data.loggedInUser.username === data.viewUser.username ? 100 : 1)">
 				<h4>{{checkin.shout}}</h4>
-				<h4>{{checkin.createdAt | date}}</h4>
+				<h4>{{(checkin.createdAt * 1000) | date}}</h4>
 				<h4>{{checkin.venue.name}}</h4>
 				<hr>
 			</div>
