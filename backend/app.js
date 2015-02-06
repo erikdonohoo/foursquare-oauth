@@ -45,7 +45,7 @@ app.get('/users/:id', function(req, res) {
 	var id = req.params.id;
 	var user;
 	getJson().users.forEach(function (u) {
-		if (u.id === id) user = u;
+		if (u.username === id) user = u;
 	});
 
 	res.json(user);
@@ -63,7 +63,7 @@ app.put('/users/:id', function (req, res) {
 	var db = getJson();
 	for (var i = 0; i < db.users.length; i++) {
 		var user = db.users[i];
-		if (user.id === req.params.id) {
+		if (user.username === req.params.id) {
 			db.users[i] = req.body;
 		}
 	}
