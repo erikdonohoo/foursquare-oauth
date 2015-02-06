@@ -23,6 +23,11 @@ angular.module('foursquare', [
 		$scope.appName = v.name;
 	});
 
+	// Remove token from url
+	if (window.location.href.indexOf('access_token')) {
+		window.location.hash = '';
+	}
+
 	var data = {};
 
 	$scope.$oauth2 = $oauth2;
