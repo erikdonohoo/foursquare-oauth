@@ -35,7 +35,7 @@
 		</div>
 		<div class="container" ng-show="data.loggedInUser">
 			<div ng-if="!data.loggedInUser.id">
-				<button ng-click="auth()">Bind to foursquare</button>
+				<button ng-click="$oauth2.authenticate()">Bind to foursquare</button>
 			</div>
 			<div>
 				<button ng-click="logout()">Logout</button>
