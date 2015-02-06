@@ -44,6 +44,13 @@
 					<button  ng-click="data.viewUser = user">{{user.username}}</button>
 				</div>
 			</div>
+			<hr>
+			<h3>View User: {{data.viewUser.username}}</h3>
+			<div ng-repeat="checkin in data.viewUser.checkins">
+				<h4>{{checkin.shout}}</h4>
+				<h4>{{checkin.createdAt | date}}</h4>
+				<h4>{{checkin.venuename}}</h4>
+			</div>
 		</div>
 
 		<!--[if lt IE 9]>

@@ -83,6 +83,11 @@ angular.module('foursquare', [
 				window.localStorage.foursquareuser = JSON.stringify(data.loggedInUser);
 				if (user.token) {
 					window.sessionStorage['angular-oauth2-DU0NBQTNEANSZ0PZVQT5VKEPGJQK0DJYZHHUA1UUV1WJZGK0'] = JSON.stringify(user.token);
+					// get checkins
+					$http.get('https://api.foursquare.com/v2/users/self/checkins')
+					.success(function (data) {
+						data.loggedInUser.checkins = data.checkins;
+					});
 				}
 			});
 		}
