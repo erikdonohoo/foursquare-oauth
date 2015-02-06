@@ -32,7 +32,6 @@ angular.module('foursquare', [
 
 	$scope.$oauth2 = $oauth2;
 
-
 	// Get info about existing users
 	$http.get('https://52.0.30.223/api/users')
 	.success(function (users) {
@@ -67,6 +66,8 @@ angular.module('foursquare', [
 						user.checkins = data.loggedInUser.checkins;
 					}
 				});
+
+				updateUser(data.loggedInUser);
 			});
 		}
 	}
@@ -108,6 +109,8 @@ angular.module('foursquare', [
 								user.checkins = data.loggedInUser.checkins;
 							}
 						});
+
+						updateUser(data.loggedInUser);
 					});
 				}
 			});
