@@ -49,7 +49,8 @@
 			<div ng-repeat="checkin in data.viewUser.checkins">
 				<h4>{{checkin.shout}}</h4>
 				<h4>{{checkin.createdAt | date}}</h4>
-				<h4>{{checkin.venuename}}</h4>
+				<h4>{{checkin.venue.name}}</h4>
+				<hr>
 			</div>
 		</div>
 
