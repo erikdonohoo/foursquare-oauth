@@ -29,7 +29,7 @@ app.post('/push/checkin', function (req, res) {
 	var db = getJson();
 	db.users.forEach(function (user) {
 		if (checkin.user.id === user.id) {
-			user.checkins = user.checkins || {};
+			user.checkins = user.checkins || [];
 			user.checkins.push(checkin);
 		}
 	});
