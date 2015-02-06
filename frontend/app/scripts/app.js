@@ -50,7 +50,7 @@ angular.module('foursquare', [
 	}
 
 	function updateUser(user) {
-		return $http.put('https://52.0.30.223/api/users/' + user.username);
+		return $http.put('https://52.0.30.223/api/users/' + user.username, user);
 	}
 	function saveNewUser(user) {
 		return $http.post('https://52.0.30.223/api/users', user);
