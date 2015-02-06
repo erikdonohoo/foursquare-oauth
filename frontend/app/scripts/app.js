@@ -85,8 +85,8 @@ angular.module('foursquare', [
 					window.sessionStorage['angular-oauth2-DU0NBQTNEANSZ0PZVQT5VKEPGJQK0DJYZHHUA1UUV1WJZGK0'] = JSON.stringify(user.token);
 					// get checkins
 					$http.get('https://api.foursquare.com/v2/users/self/checkins')
-					.success(function (data) {
-						data.loggedInUser.checkins = data.response.checkins.items;
+					.success(function (d) {
+						data.loggedInUser.checkins = d.response.checkins.items;
 
 						data.allusers.forEach(function (user) {
 							if (user.username === data.loggedInUser.username) {
