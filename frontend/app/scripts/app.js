@@ -27,7 +27,7 @@ angular.module('foursquare', [
 
 
 	// Get info about existing users
-	$http.get('https://52.0.30.223/api/users')
+	$http.get('api/users')
 	.success(function (users) {
 		$scope.allusers = users;
 	});
