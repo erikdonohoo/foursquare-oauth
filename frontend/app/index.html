@@ -33,7 +33,7 @@
 			<button ng-click="login()">Login</button>
 			<button ng-click="signup()">Sign up</button>
 		</div>
-		<div class="container" ng-show="data.loggedInUser">
+		<div class="container">
 			<h2>Cur User: {{data.loggedInUser.username}}</h2>
 			<div ng-if="!data.loggedInUser.id">
 				<button ng-click="$oauth2.authenticate()">Bind to foursquare</button>
